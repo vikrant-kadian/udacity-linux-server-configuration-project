@@ -42,7 +42,7 @@ A deep understanding of exactly what your web applications are doing, how they a
         * Install virtualenv using `sudo pip install virtualenv`.
         * Create a virtual environment named 'venv' using `sudo virtualenv venv`.
         * Activate the virtual environment using `source venv/bin/activate`.
-        * Install the important libraries to run the __inint__.py file using:
+        * Install the important libraries to run the __init__.py file using:
             * `sudo pip install Flask`
             * `sudo pip install sqlalchemy`
             * `sudo pip install psycopg2`
