@@ -6,10 +6,13 @@ You will take a baseline installation of a Linux server and prepare it to host y
 ## Why this Project?
 A deep understanding of exactly what your web applications are doing, how they are hosted, and the interactions between multiple systems are what define you as a Full Stack Web Developer. In this project, you’ll be responsible for turning a brand-new, bare bones, Linux server into the secure and efficient web application host your applications need.
 
+## Software needed for the server configuration ??
+* You need to have a server instance of linux on any of the cloud based service providers and the only thing you need is a linux terminal to follow the instructions given below.
+
 ## What to do?
 * Create an instance on either the Amazon EC2 or Google Cloud Compute.
 * Connect to the instance using either terminal or Putty.
-* To connect to my instance as grader please type `ssh grader@ec2-18-220-161-11.us-east-2.compute.amazonaws.com -i .ssh/grader_key.pem` (the key is provided in Note to the reviewer. Please copy it to your '.ssh/grader_key.pem' file.).
+* To connect to my instance as grader please type `ssh grader@ec2-18-220-161-11.us-east-2.compute.amazonaws.com -i .ssh/grader_key.pem -p 2200` (the key is provided in Note to the reviewer. Please copy it to your '.ssh/grader_key.pem' file.).
 * After connecting succesfully to your instance as admin please follow the following instructions to host your Flask Application on linux server.
     * To create 'grader' as a user type 
         `sudo adduser grader` in the terminal.
@@ -20,6 +23,7 @@ A deep understanding of exactly what your web applications are doing, how they a
     * Create a file named authorized_keys in .ssh using `sudo nano .ssh/authorized_keys` and paste the public key content of the key generated from Amazon.
         * You can get the public key content by `ssh-keygen -y` and provide the path of your '.pem' file when prompted.
     * Now you have successfully created the grader user and you can connect to it via ssh the password login is diabled by default in Amazon EC2 instance.
+    * To change the default port of ssh connection use `sudo nano /etc/ssh/sshd_config` and change the port to 2200. After changing the port use `sudo service sshd restart`.
     * To get your flask application up and running, first you need to configure the postgresql.
         * To install 'postgresql' use `sudo apt-get install postgresql`.
             * To login in postgresql use `sudo -u postgres psql` if it gives an error like (Is the server running locally and accepting connections on Unix domain socket "/var/run/postgresql/.s.PGSQL.5432"?). Please start the postgresql service by using `sudo service postgresql start` before executing the above command.
@@ -42,7 +46,7 @@ A deep understanding of exactly what your web applications are doing, how they a
         * Install virtualenv using `sudo pip install virtualenv`.
         * Create a virtual environment named 'venv' using `sudo virtualenv venv`.
         * Activate the virtual environment using `source venv/bin/activate`.
-        * Install the important libraries to run the __init__.py file using:
+        * Install the important libraries to run the __inint__.py file using:
             * `sudo pip install Flask`
             * `sudo pip install sqlalchemy`
             * `sudo pip install psycopg2`
